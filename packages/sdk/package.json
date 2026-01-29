@@ -1,0 +1,103 @@
+{
+  "name": "@privacykit/sdk",
+  "version": "0.1.0",
+  "description": "Unified Privacy SDK for Solana",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./adapters/*": {
+      "import": "./dist/adapters/*.mjs",
+      "require": "./dist/adapters/*.js",
+      "types": "./dist/adapters/*.d.ts"
+    },
+    "./arcium": {
+      "import": "./dist/arcium/index.mjs",
+      "require": "./dist/arcium/index.js",
+      "types": "./dist/arcium/index.d.ts"
+    },
+    "./noir": {
+      "import": "./dist/noir/index.mjs",
+      "require": "./dist/noir/index.js",
+      "types": "./dist/noir/index.d.ts"
+    },
+    "./privacycash": {
+      "import": "./dist/privacycash/index.mjs",
+      "require": "./dist/privacycash/index.js",
+      "types": "./dist/privacycash/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "circuits",
+    "src/privacycash/circuits"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src/",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "circuits:compile": "cd circuits && nargo compile",
+    "circuits:test": "cd circuits && nargo test",
+    "privacycash:circuits": "echo 'See src/privacycash/circuits/README.md for circuit compilation instructions'"
+  },
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.30.0",
+    "@radr/shadowwire": "^1.0.0",
+    "@solana/spl-token": "^0.4.0",
+    "@solana/web3.js": "^1.95.0",
+    "bs58": "^5.0.0",
+    "circomlibjs": "^0.1.7",
+    "eventemitter3": "^5.0.0",
+    "ffjavascript": "^0.3.0",
+    "snarkjs": "^0.7.4",
+    "tweetnacl": "^1.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/snarkjs": "^0.7.8",
+    "eslint": "^8.55.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0"
+  },
+  "peerDependencies": {
+    "@solana/web3.js": "^1.90.0"
+  },
+  "optionalDependencies": {
+    "@arcium-hq/client": "^0.2.0",
+    "@arcium-hq/reader": "^0.2.0",
+    "@noir-lang/backend_barretenberg": "^0.38.0",
+    "@noir-lang/noir_js": "^0.38.0"
+  },
+  "keywords": [
+    "solana",
+    "privacy",
+    "zk",
+    "zero-knowledge",
+    "mpc",
+    "multi-party-computation",
+    "confidential",
+    "shadowwire",
+    "arcium",
+    "cspl",
+    "noir",
+    "barretenberg",
+    "groth16",
+    "poseidon",
+    "tornado-cash",
+    "privacy-pool",
+    "zksnark",
+    "blockchain"
+  ],
+  "license": "MIT",
+  "author": "PrivacyKit Contributors"
+}
