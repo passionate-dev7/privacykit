@@ -77,6 +77,9 @@ export {
   ArciumAdapter,
   NoirAdapter,
   PrivacyCashAdapter,
+  // Production adapters that use official SDKs
+  ShadowWireProductionAdapter,
+  PrivacyCashProductionAdapter,
   createAdapter,
   getAllAdapters,
 } from './adapters';
@@ -130,6 +133,10 @@ export {
   truncateAddress,
   isBrowser,
   isWasmSupported,
+
+  // Wallet utilities
+  keypairToWalletAdapter,
+  toWalletAdapter,
 } from './utils';
 
 // Noir ZK Proving System

@@ -1,4 +1,4 @@
-import type { Connection } from '@solana/web3.js';
+import { type Connection, Keypair } from '@solana/web3.js';
 import type {
   PrivacyProvider,
   PrivacyLevel,
@@ -15,6 +15,7 @@ import type {
 } from '../types';
 import { Logger, defaultLogger } from '../utils/logger';
 import { ProviderNotAvailableError } from '../utils/errors';
+import { toWalletAdapter, isKeypair } from '../utils';
 
 /**
  * Base class for privacy provider adapters
@@ -37,10 +38,12 @@ export abstract class BaseAdapter implements PrivacyProviderAdapter {
 
   /**
    * Initialize the adapter with connection and wallet
+   * Accepts both WalletAdapter and raw Keypair (automatically converted)
    */
-  async initialize(connection: Connection, wallet?: WalletAdapter): Promise<void> {
+  async initialize(connection: Connection, wallet?: WalletAdapter | Keypair): Promise<void> {
     this.connection = connection;
-    this.wallet = wallet || null;
+    // Automatically convert Keypair to WalletAdapter if needed
+    this.wallet = wallet ? toWalletAdapter(wallet as WalletAdapter | Keypair) : null;
     await this.onInitialize();
     this.initialized = true;
     this.logger.info(`${this.name} adapter initialized`);
@@ -90,9 +93,10 @@ export abstract class BaseAdapter implements PrivacyProviderAdapter {
 
   /**
    * Update wallet reference
+   * Accepts both WalletAdapter and raw Keypair (automatically converted)
    */
-  setWallet(wallet: WalletAdapter): void {
-    this.wallet = wallet;
+  setWallet(wallet: WalletAdapter | Keypair): void {
+    this.wallet = toWalletAdapter(wallet as WalletAdapter | Keypair);
   }
 
   /**

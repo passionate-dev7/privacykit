@@ -51,10 +51,9 @@ export interface OnChainVerifierConfig {
 /**
  * Sunspot Groth16 Verifier Program ID
  * This is the production verifier deployed by Reilabs
+ * Note: Using SystemProgram as placeholder until actual verifier is deployed
  */
-export const SUNSPOT_VERIFIER_PROGRAM_ID = new PublicKey(
-  'SunspotVerifier111111111111111111111111111'
-);
+export const SUNSPOT_VERIFIER_PROGRAM_ID = SystemProgram.programId;
 
 /**
  * Instruction codes for the Sunspot verifier

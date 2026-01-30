@@ -30,6 +30,16 @@
       "import": "./dist/privacycash/index.mjs",
       "require": "./dist/privacycash/index.js",
       "types": "./dist/privacycash/index.d.ts"
+    },
+    "./shadowwire": {
+      "import": "./dist/shadowwire/index.mjs",
+      "require": "./dist/shadowwire/index.js",
+      "types": "./dist/shadowwire/index.d.ts"
+    },
+    "./production": {
+      "import": "./dist/adapters/production.mjs",
+      "require": "./dist/adapters/production.js",
+      "types": "./dist/adapters/production.d.ts"
     }
   },
   "files": [
@@ -51,13 +61,14 @@
   },
   "dependencies": {
     "@coral-xyz/anchor": "^0.30.0",
-    "@radr/shadowwire": "^1.0.0",
+    "@radr/shadowwire": "^1.1.15",
     "@solana/spl-token": "^0.4.0",
     "@solana/web3.js": "^1.95.0",
     "bs58": "^5.0.0",
     "circomlibjs": "^0.1.7",
     "eventemitter3": "^5.0.0",
     "ffjavascript": "^0.3.0",
+    "privacycash": "^1.1.11",
     "snarkjs": "^0.7.4",
     "tweetnacl": "^1.0.3"
   },
@@ -73,10 +84,10 @@
     "@solana/web3.js": "^1.90.0"
   },
   "optionalDependencies": {
-    "@arcium-hq/client": "^0.2.0",
-    "@arcium-hq/reader": "^0.2.0",
-    "@noir-lang/backend_barretenberg": "^0.38.0",
-    "@noir-lang/noir_js": "^0.38.0"
+    "@arcium-hq/client": "^0.6.5",
+    "@arcium-hq/reader": "^0.6.5",
+    "@noir-lang/backend_barretenberg": "^0.36.0",
+    "@noir-lang/noir_js": "^1.0.0-beta.18"
   },
   "keywords": [
     "solana",
