@@ -8,7 +8,7 @@ import {
   getAllAdapters,
   SUPPORTED_TOKENS,
   type WalletAdapter,
-} from '@privacykit/sdk';
+} from 'privacykit-sdk';
 import { loadConfig, getRpcUrl } from '../utils/config.js';
 import { loadWallet, truncateAddress } from '../utils/wallet.js';
 

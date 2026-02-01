@@ -9,7 +9,7 @@ import {
   getAllAdapters,
   type TransferRequest,
   type WalletAdapter,
-} from '@privacykit/sdk';
+} from 'privacykit-sdk';
 import { loadConfig, getRpcUrl } from '../utils/config.js';
 import { loadWallet, isValidAddress, truncateAddress } from '../utils/wallet.js';
 

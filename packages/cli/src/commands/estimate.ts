@@ -8,7 +8,7 @@ import {
   getAllAdapters,
   type EstimateRequest,
   type WalletAdapter,
-} from '@privacykit/sdk';
+} from 'privacykit-sdk';
 import { loadConfig, getRpcUrl } from '../utils/config.js';
 import { loadWallet, truncateAddress } from '../utils/wallet.js';
 
@@ -152,7 +152,7 @@ export function createEstimateCommand(): Command {
 
           // Check if adapter supports this operation and privacy level
           const supportsToken = adapter.supportedTokens.includes(options.token.toUpperCase()) ||
-                               adapter.supportedTokens.includes('*');
+            adapter.supportedTokens.includes('*');
           const supportsPrivacy = adapter.supportedLevels.includes(privacyLevel);
 
           if (!supportsToken || !supportsPrivacy) {
