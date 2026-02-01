@@ -7,7 +7,7 @@ import {
   TransferRequest,
   TransferResult,
   EstimateResult,
-} from '@privacykit/sdk';
+} from 'privacykit-sdk';
 import { usePrivacyKit } from '@/context/PrivacyKitContext';
 
 interface TransferState {

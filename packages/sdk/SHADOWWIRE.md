@@ -41,13 +41,13 @@ The ShadowPay API uses two authentication mechanisms:
 ### Installation
 
 ```bash
-npm install @privacykit/sdk
+npm install privacykit-sdk
 ```
 
 ### Quick Start
 
 ```typescript
-import { ShadowWireAdapter, PrivacyLevel } from '@privacykit/sdk';
+import { ShadowWireAdapter, PrivacyLevel } from 'privacykit-sdk';
 import { Connection, Keypair } from '@solana/web3.js';
 
 // Initialize adapter
@@ -71,7 +71,7 @@ console.log('Transaction:', result.signature);
 ### Using the API Client Directly
 
 ```typescript
-import { createShadowPayClient } from '@privacykit/sdk';
+import { createShadowPayClient } from 'privacykit-sdk';
 
 const client = createShadowPayClient({
   apiKey: process.env.SHADOWPAY_API_KEY,
@@ -220,7 +220,7 @@ ShadowPay supports webhooks for real-time payment notifications:
 
 ```typescript
 import express from 'express';
-import { ShadowPayApiClient } from '@privacykit/sdk';
+import { ShadowPayApiClient } from 'privacykit-sdk';
 
 const app = express();
 const client = new ShadowPayApiClient({ apiKey: 'your_api_key' });

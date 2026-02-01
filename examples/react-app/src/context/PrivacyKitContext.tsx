@@ -22,14 +22,14 @@ import {
   BalanceResult,
   NetworkCluster,
   WalletAdapter,
-} from '@privacykit/sdk';
+} from 'privacykit-sdk';
 import {
   ShadowWireAdapter,
   ArciumAdapter,
   PrivacyCashAdapter,
   createAdapter,
-} from '@privacykit/sdk/adapters';
-import { PrivacyRouter } from '@privacykit/sdk/core/router';
+} from 'privacykit-sdk/adapters';
+import { PrivacyRouter } from 'privacykit-sdk/core/router';
 
 interface PrivacyKitContextValue {
   // State

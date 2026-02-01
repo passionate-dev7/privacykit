@@ -249,7 +249,7 @@ export class PipelineBuilder {
  *
  * @example
  * ```typescript
- * import { PrivacyKit, PrivacyLevel } from '@privacykit/sdk';
+ * import { PrivacyKit, PrivacyLevel } from 'privacykit-sdk';
  *
  * const kit = new PrivacyKit({
  *   network: 'mainnet-beta',

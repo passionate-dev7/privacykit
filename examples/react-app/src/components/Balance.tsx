@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
-import { PrivacyProvider } from '@privacykit/sdk';
+import { PrivacyProvider } from 'privacykit-sdk';
 import {
   usePrivateBalance,
   useAllPrivateBalances,

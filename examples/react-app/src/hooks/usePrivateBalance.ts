@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { PrivacyProvider, BalanceResult } from '@privacykit/sdk';
+import { PrivacyProvider, BalanceResult } from 'privacykit-sdk';
 import { usePrivacyKit } from '@/context/PrivacyKitContext';
 
 interface UsePrivateBalanceReturn {

@@ -110,5 +110,17 @@
     "blockchain"
   ],
   "license": "MIT",
-  "author": "PrivacyKit Contributors"
+  "author": "PrivacyKit Contributors",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/privacykit/sdk.git",
+    "directory": "packages/sdk"
+  },
+  "homepage": "https://github.com/privacykit/sdk#readme",
+  "bugs": {
+    "url": "https://github.com/privacykit/sdk/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }

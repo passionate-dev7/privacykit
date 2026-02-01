@@ -15,14 +15,14 @@ import {
   PrivacyKitConfig,
   WalletAdapter,
   BalanceResult,
-} from '@privacykit/sdk';
+} from 'privacykit-sdk';
 import {
   ShadowWireAdapter,
   ArciumAdapter,
   PrivacyCashAdapter,
   createAdapter,
-} from '@privacykit/sdk/adapters';
-import { PrivacyRouter } from '@privacykit/sdk/core/router';
+} from 'privacykit-sdk/adapters';
+import { PrivacyRouter } from 'privacykit-sdk/core/router';
 
 // Configuration
 const NETWORK = 'devnet' as const;
@@ -419,8 +419,8 @@ async function main() {
     await depositWithdrawCycle();
     await multiTokenTransfers();
 
-    console.log('\n╔═══════════════════════════════════════════════════════════════╗');
-    console.log('║                    All Examples Complete!                      ║');
+    console.log('\n╔═════════════════════════════════════════════════════════════╗');
+    console.log('║                    All Examples Complete!                     ║');
     console.log('╚═══════════════════════════════════════════════════════════════╝\n');
 
     console.log('Next Steps:');

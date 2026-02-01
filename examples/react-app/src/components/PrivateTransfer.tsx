@@ -2,7 +2,7 @@
 
 import { useState, useEffect, FormEvent } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
-import { PrivacyLevel, PrivacyProvider } from '@privacykit/sdk';
+import { PrivacyLevel, PrivacyProvider } from 'privacykit-sdk';
 import { usePrivateTransfer } from '@/hooks/usePrivateTransfer';
 import { usePrivacyKit } from '@/context/PrivacyKitContext';
 
@@ -121,26 +121,23 @@ function PrivacyLevelSelector({
             key={level}
             type="button"
             onClick={() => onChange(level)}
-            className={`w-full p-4 rounded-xl border-2 transition-all text-left ${
-              isSelected
+            className={`w-full p-4 rounded-xl border-2 transition-all text-left ${isSelected
                 ? `border-${info.color}-500 bg-${info.color}-50 dark:bg-${info.color}-900/20`
                 : 'border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600'
-            }`}
+              }`}
           >
             <div className="flex items-center justify-between">
               <div>
                 <div className="flex items-center space-x-2">
                   <span
-                    className={`w-3 h-3 rounded-full ${
-                      isSelected ? `bg-${info.color}-500` : 'bg-slate-300 dark:bg-slate-600'
-                    }`}
+                    className={`w-3 h-3 rounded-full ${isSelected ? `bg-${info.color}-500` : 'bg-slate-300 dark:bg-slate-600'
+                      }`}
                   />
                   <span
-                    className={`font-medium ${
-                      isSelected
+                    className={`font-medium ${isSelected
                         ? `text-${info.color}-700 dark:text-${info.color}-300`
                         : 'text-slate-700 dark:text-slate-300'
-                    }`}
+                      }`}
                   >
                     {info.name}
                   </span>
@@ -536,10 +533,10 @@ export function PrivateTransfer() {
               supportedLevels.length > 0
                 ? supportedLevels.filter((l) => l !== PrivacyLevel.NONE)
                 : [
-                    PrivacyLevel.AMOUNT_HIDDEN,
-                    PrivacyLevel.SENDER_HIDDEN,
-                    PrivacyLevel.FULL_ENCRYPTED,
-                  ]
+                  PrivacyLevel.AMOUNT_HIDDEN,
+                  PrivacyLevel.SENDER_HIDDEN,
+                  PrivacyLevel.FULL_ENCRYPTED,
+                ]
             }
           />
         </div>

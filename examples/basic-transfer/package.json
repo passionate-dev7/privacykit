@@ -10,7 +10,7 @@
     "dev": "npx ts-node-dev --respawn index.ts"
   },
   "dependencies": {
-    "@privacykit/sdk": "workspace:*",
+    "privacykit-sdk": "workspace:*",
     "@solana/web3.js": "^1.95.0",
     "bs58": "^5.0.0"
   },
