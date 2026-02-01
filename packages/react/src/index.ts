@@ -106,4 +106,4 @@ export type {
   WalletAdapter,
   PrivacyKitConfig,
   TransferOptions,
-} from '@privacykit/sdk';
+} from 'privacykit-sdk';

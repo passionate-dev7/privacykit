@@ -27,8 +27,8 @@ import type {
   EstimateResult,
   BalanceResult,
   PrivacyLevel,
-} from '@privacykit/sdk';
-import { PrivacyRouter } from '@privacykit/sdk';
+} from 'privacykit-sdk';
+import { PrivacyRouter } from 'privacykit-sdk';
 
 /**
  * State of the PrivacyKit context
@@ -187,10 +187,10 @@ export function PrivacyKitProvider({
       const adaptersToInit: PrivacyProviderAdapter[] = [];
 
       // Dynamically import adapters
-      const { ShadowWireAdapter } = await import('@privacykit/sdk');
-      const { ArciumAdapter } = await import('@privacykit/sdk');
-      const { NoirAdapter } = await import('@privacykit/sdk');
-      const { PrivacyCashAdapter } = await import('@privacykit/sdk');
+      const { ShadowWireAdapter } = await import('privacykit-sdk');
+      const { ArciumAdapter } = await import('privacykit-sdk');
+      const { NoirAdapter } = await import('privacykit-sdk');
+      const { PrivacyCashAdapter } = await import('privacykit-sdk');
 
       const allAdapters: Record<PrivacyProvider, new () => PrivacyProviderAdapter> = {
         shadowwire: ShadowWireAdapter,

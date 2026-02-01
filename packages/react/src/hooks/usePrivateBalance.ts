@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { usePrivacyKitContext } from '../context';
-import type { BalanceResult, PrivacyProvider } from '@privacykit/sdk';
+import type { BalanceResult, PrivacyProvider } from 'privacykit-sdk';
 
 /**
  * Options for usePrivateBalance hook

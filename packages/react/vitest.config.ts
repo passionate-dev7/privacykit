@@ -14,7 +14,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@privacykit/sdk': '../sdk/dist',
+      'privacykit-sdk': '../sdk/dist',
     },
   },
 });

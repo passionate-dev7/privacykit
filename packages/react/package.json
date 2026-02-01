@@ -25,7 +25,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@privacykit/sdk": "*"
+    "privacykit-sdk": "*"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.1",

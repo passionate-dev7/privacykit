@@ -8,7 +8,7 @@ import type {
   PrivacyLevel,
   PrivacyProvider,
   TransferOptions,
-} from '@privacykit/sdk';
+} from 'privacykit-sdk';
 
 /**
  * Transfer state

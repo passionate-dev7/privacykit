@@ -7,7 +7,7 @@ import type {
   EstimateResult,
   PrivacyLevel,
   PrivacyProvider,
-} from '@privacykit/sdk';
+} from 'privacykit-sdk';
 
 /**
  * Parameters for estimating operation costs

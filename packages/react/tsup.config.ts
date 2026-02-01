@@ -4,7 +4,7 @@ export default defineConfig({
   entry: ['src/index.ts'],
   format: ['cjs', 'esm'],
   dts: {
-    resolve: ['@privacykit/sdk'],
+    resolve: ['privacykit-sdk'],
   },
   clean: true,
   sourcemap: true,
@@ -15,7 +15,7 @@ export default defineConfig({
     'react',
     '@solana/web3.js',
     '@solana/wallet-adapter-react',
-    '@privacykit/sdk',
+    'privacykit-sdk',
   ],
   esbuildOptions(options) {
     options.jsx = 'automatic';

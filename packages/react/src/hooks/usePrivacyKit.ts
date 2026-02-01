@@ -5,8 +5,8 @@ import type {
   PrivacyProvider,
   PrivacyProviderAdapter,
   NetworkCluster,
-} from '@privacykit/sdk';
-import { PrivacyRouter } from '@privacykit/sdk';
+} from 'privacykit-sdk';
+import { PrivacyRouter } from 'privacykit-sdk';
 
 /**
  * Return type for usePrivacyKit hook
