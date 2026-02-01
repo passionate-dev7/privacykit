@@ -65,12 +65,16 @@ export interface PrivacyKitConfig {
   rpcUrl?: string;
   /** Enabled privacy providers */
   providers?: PrivacyProvider[];
-  /** Wallet adapter for signing */
-  wallet?: WalletAdapter;
+  /** Wallet adapter for signing (can be WalletAdapter or Keypair) */
+  wallet?: WalletAdapter | import('@solana/web3.js').Keypair;
   /** Enable debug logging */
   debug?: boolean;
   /** Custom RPC headers (for authenticated endpoints) */
   rpcHeaders?: Record<string, string>;
+  /** Use production adapters (real SDK integrations) instead of mock/dev adapters */
+  production?: boolean;
+  /** API key for ShadowWire (only needed for production mode with ShadowWire) */
+  shadowWireApiKey?: string;
 }
 
 /**

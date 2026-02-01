@@ -1,5 +1,5 @@
 {
-  "name": "@privacykit/sdk",
+  "name": "privacykit-sdk",
   "version": "0.1.0",
   "description": "Unified Privacy SDK for Solana",
   "main": "./dist/index.js",

@@ -1,4 +1,4 @@
-import { Connection } from '@solana/web3.js';
+import { Connection, Keypair } from '@solana/web3.js';
 import EventEmitter from 'eventemitter3';
 import type {
   PrivacyKitConfig,
@@ -275,6 +275,8 @@ export class PrivacyKit extends EventEmitter<PrivacyKitEvents> {
     PrivacyKitConfig;
   private connection: Connection | null = null;
   private wallet: WalletAdapter | null = null;
+  /** Original wallet (Keypair or WalletAdapter) for adapters that need raw Keypair */
+  private originalWallet: WalletAdapter | Keypair | null = null;
   private router: PrivacyRouter;
   private adapters: Map<PrivacyProvider, PrivacyProviderAdapter> = new Map();
   private logger: Logger;
@@ -307,9 +309,38 @@ export class PrivacyKit extends EventEmitter<PrivacyKitEvents> {
     // Initialize router
     this.router = new PrivacyRouter(this.logger.child('Router'));
 
-    // Set wallet if provided
+    // Store original wallet (could be Keypair or WalletAdapter)
     if (config.wallet) {
-      this.wallet = config.wallet;
+      this.originalWallet = config.wallet;
+      // Convert Keypair to WalletAdapter for internal use if needed
+      if ('secretKey' in config.wallet && config.wallet.secretKey) {
+        // It's a Keypair - keep original for adapters, but also create WalletAdapter
+        const kp = config.wallet as Keypair;
+        this.wallet = {
+          publicKey: kp.publicKey,
+          signTransaction: async <T extends { serialize(): Uint8Array }>(tx: T) => {
+            if ('sign' in tx && typeof (tx as any).sign === 'function') {
+              (tx as any).sign([kp]);
+            }
+            return tx;
+          },
+          signAllTransactions: async <T extends { serialize(): Uint8Array }>(txs: T[]) => {
+            for (const tx of txs) {
+              if ('sign' in tx && typeof (tx as any).sign === 'function') {
+                (tx as any).sign([kp]);
+              }
+            }
+            return txs;
+          },
+          signMessage: async (message: Uint8Array) => {
+            const { sign } = await import('@noble/ed25519');
+            return Buffer.from(await sign(message, kp.secretKey.slice(0, 32)));
+          },
+        };
+      } else {
+        // It's already a WalletAdapter
+        this.wallet = config.wallet as WalletAdapter;
+      }
     }
 
     this.logger.debug('PrivacyKit instance created', {
@@ -344,15 +375,21 @@ export class PrivacyKit extends EventEmitter<PrivacyKitEvents> {
       // Initialize enabled adapters
       const enabledProviders = this.config.providers || [];
       const initPromises: Promise<void>[] = [];
+      const useProduction = this.config.production ?? false;
 
       for (const provider of enabledProviders) {
         try {
-          const adapter = createAdapter(provider);
+          const adapter = createAdapter(provider, {
+            production: useProduction,
+            shadowWireApiKey: this.config.shadowWireApiKey,
+          });
+          // Pass originalWallet (Keypair or WalletAdapter) to adapters
+          // This allows adapters that need Keypair (like Privacy Cash) to work correctly
           initPromises.push(
-            adapter.initialize(this.connection, this.wallet || undefined).then(() => {
+            adapter.initialize(this.connection, this.originalWallet || undefined).then(() => {
               this.adapters.set(provider, adapter);
               this.router.registerAdapter(adapter);
-              this.logger.info(`Initialized adapter: ${adapter.name}`);
+              this.logger.info(`Initialized adapter: ${adapter.name}${useProduction ? ' (production)' : ''}`);
             })
           );
         } catch (error) {

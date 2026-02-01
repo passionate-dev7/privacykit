@@ -6,13 +6,13 @@ PrivacyKit SDK is a **unified privacy abstraction layer** for Solana that provid
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                           Application Layer                              │
-│                    (Your dApp, Wallet, or Service)                       │
+│                           Application Layer                             │
+│                    (Your dApp, Wallet, or Service)                      │
 └─────────────────────────────────────────────────────────────────────────┘
                                     │
                                     ▼
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                          PrivacyKit SDK                                  │
+│                          PrivacyKit SDK                                 │
 │  ┌─────────────┐  ┌──────────────┐  ┌─────────────┐  ┌───────────────┐  │
 │  │ PrivacyKit  │  │    Router    │  │  Pipeline   │  │    Events     │  │
 │  │   (Core)    │  │ (Selection)  │  │  (Chaining) │  │   (Emitter)   │  │
@@ -23,29 +23,29 @@ PrivacyKit SDK is a **unified privacy abstraction layer** for Solana that provid
                     │               │               │
                     ▼               ▼               ▼
 ┌───────────────────────────────────────────────────────────────────────────┐
-│                           Adapter Layer                                    │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  │
-│  │  ShadowWire  │  │    Arcium    │  │ Privacy Cash │  │     Noir     │  │
-│  │   Adapter    │  │   Adapter    │  │   Adapter    │  │   Adapter    │  │
-│  │ (Production) │  │ (Production) │  │ (Production) │  │  (Unified)   │  │
-│  └──────────────┘  └──────────────┘  └──────────────┘  └──────────────┘  │
+│                           Adapter Layer                                   │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐   │
+│  │  ShadowWire  │  │    Arcium    │  │ Privacy Cash │  │     Noir     │   │
+│  │   Adapter    │  │   Adapter    │  │   Adapter    │  │   Adapter    │   │
+│  │ (Production) │  │ (Production) │  │ (Production) │  │  (Unified)   │   │
+│  └──────────────┘  └──────────────┘  └──────────────┘  └──────────────┘   │
 └───────────────────────────────────────────────────────────────────────────┘
                                     │
                     ┌───────────────┼───────────────┐
                     │               │               │
                     ▼               ▼               ▼
 ┌───────────────────────────────────────────────────────────────────────────┐
-│                        Protocol/SDK Layer                                  │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  │
-│  │ @radr/       │  │ @arcium-hq/  │  │ privacycash  │  │ @noir-lang/  │  │
-│  │ shadowwire   │  │ client       │  │ SDK          │  │ noir_js      │  │
-│  └──────────────┘  └──────────────┘  └──────────────┘  └──────────────┘  │
+│                        Protocol/SDK Layer                                 │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐   │
+│  │ @radr/       │  │ @arcium-hq/  │  │ privacycash  │  │ @noir-lang/  │   │
+│  │ shadowwire   │  │ client       │  │ SDK          │  │ noir_js      │   │
+│  └──────────────┘  └──────────────┘  └──────────────┘  └──────────────┘   │
 └───────────────────────────────────────────────────────────────────────────┘
                                     │
                                     ▼
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                         Solana Blockchain                                │
-│              (Program Interactions, Transactions, State)                 │
+│                         Solana Blockchain                               │
+│              (Program Interactions, Transactions, State)                │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 

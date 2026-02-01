@@ -322,24 +322,40 @@ export class PrivacyCashProductionAdapter extends BaseAdapter {
 
     this.logger.info(`Privacy Cash transfer: ${request.amount} ${request.token}`);
 
-    // Step 1: Deposit
-    const depositResult = await this.deposit({
-      amount: request.amount,
-      token: request.token,
-    });
+    const token = (request.token || 'SOL').toUpperCase();
+    let totalFee = 0;
 
-    // Step 2: Withdraw to recipient
+    // Check existing shielded balance first
+    const shieldedBalance = await this.getBalance(token);
+    this.logger.info(`Current shielded balance: ${shieldedBalance} ${token}`);
+
+    // If we don't have enough shielded funds, deposit first
+    if (shieldedBalance < request.amount) {
+      const amountToDeposit = request.amount - shieldedBalance;
+      this.logger.info(`Depositing ${amountToDeposit} ${token} into Privacy Cash`);
+
+      const depositResult = await this.deposit({
+        amount: amountToDeposit,
+        token: request.token,
+      });
+      totalFee += depositResult.fee;
+    } else {
+      this.logger.info(`Using existing shielded balance for transfer`);
+    }
+
+    // Withdraw to recipient
     const withdrawResult = await this.withdraw({
       amount: request.amount,
       token: request.token,
       recipient: request.recipient,
     });
+    totalFee += withdrawResult.fee;
 
     return {
       signature: withdrawResult.signature,
       provider: this.provider,
       privacyLevel: PrivacyLevel.COMPLIANT_POOL,
-      fee: depositResult.fee + withdrawResult.fee,
+      fee: totalFee,
     };
   }
 
