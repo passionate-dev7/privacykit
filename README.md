@@ -192,7 +192,7 @@ See the [full API documentation](./docs/api-reference.md) for complete details.
 
 ```bash
 # Clone the repository
-git clone https://github.com/privacykit/privacykit.git
+git clone https://github.com/passionate-dev7/privacykit.git
 cd privacykit
 
 # Install dependencies
