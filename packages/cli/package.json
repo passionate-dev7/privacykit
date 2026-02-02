@@ -1,0 +1,49 @@
+{
+  "name": "@privacykit/cli",
+  "version": "0.1.0",
+  "description": "Command-line interface for PrivacyKit - Private transfers on Solana",
+  "main": "./dist/index.js",
+  "bin": {
+    "privacykit": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@privacykit/sdk": "*",
+    "@solana/spl-token": "^0.4.0",
+    "@solana/web3.js": "^1.95.0",
+    "bs58": "^5.0.0",
+    "chalk": "^5.3.0",
+    "commander": "^12.0.0",
+    "ora": "^8.0.0",
+    "tweetnacl": "^1.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "eslint": "^8.55.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.3.0"
+  },
+  "type": "module",
+  "keywords": [
+    "solana",
+    "privacy",
+    "cli",
+    "zk",
+    "zero-knowledge",
+    "privacykit"
+  ],
+  "license": "MIT",
+  "author": "PrivacyKit Contributors",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
