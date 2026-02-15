@@ -25,11 +25,7 @@ PrivacyKit provides a single, unified API to interact with multiple privacy prot
 ## Installation
 
 ```bash
-bun install @privacykit/sdk
-# or
-yarn add @privacykit/sdk
-# or
-pnpm add @privacykit/sdk
+bun install privacykit-sdk
 ```
 
 ## Quick Start
@@ -38,8 +34,8 @@ pnpm add @privacykit/sdk
 
 ```typescript
 import { Connection, Keypair } from '@solana/web3.js';
-import { PrivacyLevel } from '@privacykit/sdk';
-import { ShadowWireAdapter } from '@privacykit/sdk/adapters';
+import { PrivacyLevel } from 'privacykit-sdk';
+import { ShadowWireAdapter } from 'privacykit-sdk/adapters';
 
 // Initialize
 const connection = new Connection('https://api.devnet.solana.com');
